@@ -17,12 +17,11 @@ com.github.unrud.VideoDownloader
 com.github.wwmm.easyeffects
 com.mattjakeman.ExtensionManager
 com.protonvpn.www
-fr.romainvigier.MetadataCleaner
 io.github.flattool.Warehouse
 io.github.seadve.Mousai
 io.gitlab.adhami3310.Converter
 io.gitlab.librewolf-community
-io.podman_desktop.PodmanDesktop
+io.gitlab.theevilskeleton.Upscaler
 md.obsidian.Obsidian
 net.nokyan.Resources
 net.pcsx2.PCSX2
@@ -51,6 +50,8 @@ function main(){
     for app in "${apps[@]}"; do
         flatpak install "$app" -y
     done
+    echo ""
+    flatpak update -y
     echo ""
 }
 
