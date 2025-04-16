@@ -17,6 +17,7 @@ gnome-contacts
 libreoffice\*
 rhythmbox
 totem
+hplip-gui
 )
 
 apps_install=(
@@ -41,6 +42,16 @@ function install_apps(){
 }
 
 
+function update(){
+    dnf update -y
+}
+
+
+function dnfclean() {
+    dnf autoremove -y
+}
+
+
 function main(){
     if [[ $EUID -ne 0 ]]; then
         echo -e "\nThis script must be run as root.\n"
@@ -48,7 +59,9 @@ function main(){
     fi
 
     remove_apps
+    update
     install_apps
+    dnfclean
 }
 
 main
