@@ -8,31 +8,7 @@ set -o nounset
 
 # flatpak list --app --columns=application
 apps=(
-com.bitwarden.desktop
-com.discordapp.Discord
-com.github.neithern.g4music
-com.github.taiko2k.avvie
-com.github.tchx84.Flatseal
-com.github.unrud.VideoDownloader
-com.github.wwmm.easyeffects
-com.mattjakeman.ExtensionManager
-com.protonvpn.www
-io.github.flattool.Warehouse
-io.github.seadve.Mousai
-io.gitlab.adhami3310.Converter
-io.gitlab.librewolf-community
-io.gitlab.theevilskeleton.Upscaler
-md.obsidian.Obsidian
-net.nokyan.Resources
-net.pcsx2.PCSX2
-org.gnome.DejaDup
-org.inkscape.Inkscape
-org.jellyfin.JellyfinServer
-org.keepassxc.KeePassXC
-org.libretro.RetroArch
-org.qbittorrent.qBittorrent
-org.telegram.desktop
-org.videolan.VLC
+
 )
 
 
