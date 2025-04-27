@@ -12,7 +12,28 @@ apps=(
 )
 
 
+function install(){
+    echo -e "\n==== Install Flatpaks ====="
+    for app in "${apps[@]}"; do
+        flatpak install "$app" -y
+    done
+}
+
+
+function update(){
+    echo -e "\n==== Update Flatpaks ====="
+    flatpak update -y
+}
+
+
+function clean(){
+    echo -e "\n==== Clean ====="
+    flatpak uninstall --unused
+}
+
+
 function main(){
+
     if [[ $EUID -eq 0 ]]; then
         read -p "You are running this script as ROOT. Do you want to proceed with Flatpak installations? (y/n): " choice
         case "$choice" in 
@@ -22,13 +43,9 @@ function main(){
         esac
     fi
 
-    echo "==== Install Flatpaks ====="
-    for app in "${apps[@]}"; do
-        flatpak install "$app" -y
-    done
-    echo ""
-    flatpak update -y
-    echo ""
+    install
+    update
+    clean
 }
 
 main
