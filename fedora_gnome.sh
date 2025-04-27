@@ -7,17 +7,18 @@ set -o nounset
 
 apps_remove=(
 firefox
-gnome-calendar
-gnome-clocks
-gnome-maps
 gnome-abrt
-gnome-logs
-gnome-weather
+gnome-calendar
 gnome-contacts
+gnome-clocks
+gnome-logs
+gnome-maps
+gnome-system-monitor
+gnome-weather
+hplip-gui
 libreoffice\*
 rhythmbox
 totem
-hplip-gui
 )
 
 apps_install=(
@@ -47,7 +48,7 @@ function update(){
 }
 
 
-function dnfclean() {
+function clean() {
     dnf autoremove -y
 }
 
@@ -59,9 +60,9 @@ function main(){
     fi
 
     remove_apps
-    update
     install_apps
-    dnfclean
+    update
+    clean
 }
 
 main
