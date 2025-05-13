@@ -5,13 +5,20 @@
 set -o errexit
 set -o nounset
 
+################### MODIFICATION BELOW THIS LINE ###################
 
+# Use is command line to get the list of installed flatpaks
 # flatpak list --app --columns=application
+#
+# Exemple:
+# apps=(
+# org.mozilla.firefox
+# )
 apps=(
 
 )
 
-
+################### NO MODIFICATION BELOW THIS LINE ###################
 function install(){
     echo -e "\n==== Install Flatpaks ====="
     for app in "${apps[@]}"; do
@@ -41,6 +48,11 @@ function main(){
             n|N ) echo "Exiting..."; exit 0;;
             * ) echo "Invalid input. Exiting..."; exit 1;;
         esac
+    fi
+
+    if [ ${#apps[@]} -eq 0 ]; then
+        echo "No Flatpaks to install. Exiting..."
+        exit 0
     fi
 
     install
