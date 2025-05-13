@@ -9,6 +9,7 @@ apps_remove=(
 firefox
 gnome-abrt
 gnome-calendar
+gnome-characters
 gnome-contacts
 gnome-clocks
 gnome-logs
