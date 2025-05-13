@@ -61,7 +61,7 @@ function main(){
     fi
 
     remove_apps
-    install_apps
+    #install_apps
     update
     clean
 }
