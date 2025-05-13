@@ -5,6 +5,18 @@
 set -o errexit
 set -o nounset
 
+
+################### MODIFICATION BELOW THIS LINE ###################
+
+install_apps=false
+remove_apps=true
+update_system=true
+clean_system=true
+
+apps_install=(
+gnome-tweaks
+)
+
 apps_remove=(
 firefox
 gnome-abrt
@@ -22,48 +34,35 @@ rhythmbox
 totem
 )
 
-apps_install=(
-gnome-tweaks
-)
+################### NO MODIFICATION BELOW THIS LINE ###################
 
-function remove_apps(){
-    echo "==== Remove ===="
-    for app in "${apps_remove[@]}"; do
-        dnf remove "$app" -y
-    done
-    echo ""
-}
+if [[ $EUID -ne 0 ]]; then
+    echo -e "\nThis script must be run as root.\n"
+    exit 1
+fi
 
-
-function install_apps(){
+if [[ $install_apps == true ]]; then
     echo "==== Install ===="
     for app in "${apps_install[@]}"; do
         dnf install "$app" -y
     done
     echo ""
-}
+fi
 
+if [[ $remove_apps == true ]]; then
+    echo "==== Remove ===="
+    for app in "${apps_remove[@]}"; do
+        dnf remove "$app" -y
+    done
+    echo ""
+fi
 
-function update(){
+if [[ $update_system == true ]]; then
     dnf update -y
-}
+fi
 
-
-function clean() {
+if [[ $clean_system == true ]]; then
     dnf autoremove -y
-}
+fi
 
-
-function main(){
-    if [[ $EUID -ne 0 ]]; then
-        echo -e "\nThis script must be run as root.\n"
-        exit 1
-    fi
-
-    remove_apps
-    #install_apps
-    update
-    clean
-}
-
-main
+exit 0
