@@ -8,7 +8,7 @@ set -o nounset
 
 ################### MODIFICATION BELOW THIS LINE ###################
 
-install_apps=false
+install_apps=true
 remove_apps=true
 update_system=true
 clean_system=true
@@ -31,6 +31,7 @@ gnome-weather
 hplip-gui
 libreoffice\*
 rhythmbox
+simple-scan
 totem
 )
 
